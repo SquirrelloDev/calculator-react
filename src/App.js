@@ -1,8 +1,14 @@
 import './sass/index.scss'
+import Wrapper from "./components/UI/Wrapper";
+import TopControls from "./components/UI/TopControls";
+import Calculator from "./components/calculator/Calculator";
 function App() {
   return (
       <>
-        dfigfdiuhdfuig
+        <Wrapper>
+            <TopControls/>
+            <Calculator/>
+        </Wrapper>
       </>
   );
 }
