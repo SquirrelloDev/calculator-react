@@ -1,7 +1,8 @@
 import Switcher from "./Switcher";
+import classes from "../../sass/TopControls.module.scss";
 
 function ThemeSwitcher() {
-    return <div>
+    return <div className={classes.header__theme}>
         <span>theme</span>
         <Switcher/>
     </div>;
@@ -9,8 +10,8 @@ function ThemeSwitcher() {
 
 const topControls = () => {
   return (
-      <div>
-          <p>calc</p>
+      <div className={classes.header}>
+          <h1>calc</h1>
           <ThemeSwitcher/>
       </div>
   )

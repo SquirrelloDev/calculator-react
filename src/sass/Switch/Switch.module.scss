@@ -1,0 +1,38 @@
+@use '../utils' as *;
+.switch{
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .25em;
+  &__numbers{
+    margin-left: .25em;
+    span{
+      font-size: 1.2rem;
+      margin: 0 .65em;
+    }
+  }
+  &__bg{
+    position: relative;
+    border-radius: 30px;
+    background-color: $screen;
+    &__btn{
+      position: relative;
+      left: 12%;
+      margin: .25em;
+      padding: .5em;
+      background-color: $key-red;
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      transform: translateX(-50%);
+      &[data-theme="light"]{
+        background-color: $key-hover-bg;
+        left: 45%
+      }
+      &[data-theme="cyber"]{
+        background-color: $pagebg;
+        left: 78%
+      }
+    }
+
+  }
+}

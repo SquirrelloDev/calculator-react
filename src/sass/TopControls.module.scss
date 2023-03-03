@@ -1,0 +1,13 @@
+.header{
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  &__theme{
+    display: flex;
+    align-items: center;
+    span{
+      margin-right: 1em;
+      text-transform: uppercase;
+    }
+  }
+}
