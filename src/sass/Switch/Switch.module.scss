@@ -16,7 +16,7 @@
     background-color: $screen;
     &__btn{
       position: relative;
-      left: 12%;
+      left: 14%;
       margin: .25em;
       padding: .5em;
       background-color: $key-red;
@@ -24,6 +24,7 @@
       border: none;
       cursor: pointer;
       transform: translateX(-50%);
+      transition: left .2s ease;
       &[data-theme="light"]{
         background-color: $key-hover-bg;
         left: 45%
