@@ -1,6 +1,7 @@
 @use "../utils" as *;
 .calculator{
   width: 100%;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -13,6 +14,18 @@
     p{
       text-align: right;
       font-size: $number;
+    }
+    &[data-theme="light"]{
+      background-color: $screen2;
+      p{
+        color: $text-dark2;
+      }
+    }
+    &[data-theme="cyber"]{
+      background-color: $screen3;
+      p{
+        color: $light-yellow;
+      }
     }
   }
   &__controls{
@@ -47,11 +60,59 @@
       font-family: 'League Spartan', sans-serif;
       box-shadow: 0px 4px 0px $key-hover-shadow;
       cursor: pointer;
+      transition: box-shadow .2s, transform .2s;
+      &:active{
+        box-shadow: none;
+        transform: translateY(10%);
+      }
       &--special{
         background-color: $key-bg;
         color: $key-hover-bg;
         box-shadow: 0px 4px 0px $key-shadow;
         text-transform: uppercase;
+      }
+    }
+    &[data-theme="light"]{
+      background-color: $keypad2;
+      &  button[data-key="reset"]{
+        background-color: $key-bg2;
+        box-shadow: 0px 4px 0px $key-shadow2;
+      }
+      &  button[data-key='euqals']{
+        background-color: $key-red2;
+        color: $key-hover-bg;
+        box-shadow: 0px 4px 0px $key-red-shadow2;
+      }
+      .calculator__controls__key{
+        &--special{
+          background-color: $key-bg2;
+          color: $key-hover-bg;
+          box-shadow: 0px 4px 0px $key-shadow2;
+          text-transform: uppercase;
+        }
+      }
+    }
+    &[data-theme="cyber"]{
+      background-color: $keypad3;
+      &  button[data-key="reset"]{
+        background-color: $key-bg3;
+        box-shadow: 0px 4px 0px $key-shadow3;
+      }
+      &  button[data-key='euqals']{
+        background-color: $key-red3;
+        color: $dark-blue;
+        box-shadow: 0 4px 0 $key-red-shadow3;
+      }
+      .calculator__controls__key{
+        background-color: $key-hover-bg3;
+        box-shadow: 0x 4px 0px $light-yellow;
+        color: $light-yellow;
+        &--special{
+          background-color: $key-bg3;
+          color: $key-hover-bg;
+          box-shadow: 0px 4px 0px $key-shadow3;
+          text-transform: uppercase;
+        }
       }
     }
   }

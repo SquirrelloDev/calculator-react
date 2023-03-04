@@ -9,11 +9,27 @@
       font-size: 1.2rem;
       margin: 0 .65em;
     }
+    &[data-theme="light"]{
+      span{
+        color: $text-dark2;
+      }
+    }
+    &[data-theme="cyber"]{
+      span{
+        color: $light-yellow;
+      }
+    }
   }
   &__bg{
     position: relative;
     border-radius: 30px;
     background-color: $screen;
+    &[data-theme="light"]{
+      background-color: $keypad2;
+    }
+    &[data-theme="cyber"]{
+      background-color: $keypad3;
+    }
     &__btn{
       position: relative;
       left: 14%;
@@ -26,11 +42,11 @@
       transform: translateX(-50%);
       transition: left .2s ease;
       &[data-theme="light"]{
-        background-color: $key-hover-bg;
+        background-color: $key-red2;
         left: 45%
       }
       &[data-theme="cyber"]{
-        background-color: $pagebg;
+        background-color: $light-yellow;
         left: 78%
       }
     }

@@ -16,8 +16,8 @@ const Switcher = () => {
     }
   return (
       <div className={classes.switch}>
-        <div className={classes.switch__numbers}><span>1</span><span>2</span><span>3</span></div>
-        <div className={classes.switch__bg}>
+        <div data-theme={themeName} className={classes.switch__numbers}><span>1</span><span>2</span><span>3</span></div>
+        <div data-theme={themeName} className={classes.switch__bg}>
           <button data-theme={themeName} onClick={changeThemeHandler} className={classes.switch__bg__btn}></button>
         </div>
       </div>
