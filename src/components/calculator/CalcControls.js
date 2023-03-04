@@ -6,20 +6,20 @@ import {calculatorActions} from "../../store/store";
 
 const CalcControls = () => {
     const calcDispatch = useDispatch();
-  const addHandler = (value) =>{
-
+  const addHandler = () =>{
+    calcDispatch(calculatorActions.setAction({action: '+'}))
   }
-  const subtactHandler = (value) => {
-
+  const subtactHandler = () => {
+    calcDispatch(calculatorActions.setAction({action: '-'}))
   }
-  const multiplyHandler = (value) => {
-
+  const multiplyHandler = () => {
+    calcDispatch(calculatorActions.setAction({action: '*'}))
   }
-  const divisionHandler = (value) => {
-
+  const divisionHandler = () => {
+    calcDispatch(calculatorActions.setAction({action: '/'}))
   }
   const equalsHandler = () => {
-
+    calcDispatch(calculatorActions.equalsAction());
   }
   const delHandler = () => {
     calcDispatch(calculatorActions.deleteDigitAction())
@@ -37,15 +37,15 @@ const CalcControls = () => {
           <CalcKey>4</CalcKey>
           <CalcKey>5</CalcKey>
           <CalcKey>6</CalcKey>
-          <CalcKey >+</CalcKey>
+          <CalcKey calcType={'action'} calcAction={addHandler}>+</CalcKey>
           <CalcKey>1</CalcKey>
           <CalcKey>2</CalcKey>
           <CalcKey>3</CalcKey>
-          <CalcKey>-</CalcKey>
+          <CalcKey calcType={'action'} calcAction={subtactHandler}>-</CalcKey>
           <CalcKey>.</CalcKey>
           <CalcKey>0</CalcKey>
-          <CalcKey>/</CalcKey>
-          <CalcKey>x</CalcKey>
+          <CalcKey calcType={'action'} calcAction={divisionHandler}>/</CalcKey>
+          <CalcKey calcType={'action'} calcAction={multiplyHandler}>x</CalcKey>
           <CalcKey calcType={'SPECIAL'} calcAction={resetHandler} calcDataset={'reset'}>reset</CalcKey>
           <CalcKey calcType={'RESULT'} calcAction={equalsHandler} calcDataset={'euqals'}>=</CalcKey>
       </div>

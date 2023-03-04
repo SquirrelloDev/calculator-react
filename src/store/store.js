@@ -23,29 +23,56 @@ const calculatorSlice = createSlice({name: 'calculator', initialState: {currentS
     appendDigit(state,action){
         if(state.currentScreenValue.length >= 9) return;
         if(action.payload === '.' && state.currentScreenValue.includes('.')) return;
-        if(state.currentScreenValue[0] === '0'){
-            state.currentScreenValue = action.payload;
+        if(state.currentScreenValue[0] === '0' && action.payload === '.' ){
+            state.currentScreenValue += '.';
             return;
         }
+        if(state.currentScreenValue[0] === '0' && state.currentScreenValue[1] !== '.'){
+            state.currentScreenValue = action.payload;
+            return
+        }
+
         state.currentScreenValue += action.payload;
     },
-    addAction(state, action){
+    setAction(state, action){
         state.action = action.payload.action
-        state.memoryValues.push(action.payload.value);
-    },
-    subtractAction(state, action){
-
-    },
-    multiplyAction(state, action){
-
-    },
-    divideAction(state, action){
-
+        state.memoryValues.push(parseFloat(state.currentScreenValue));
+        state.currentScreenValue = '0';
     },
     equalsAction(state, action){
-
+        state.memoryValues.push(parseFloat(state.currentScreenValue));
+        switch (state.action){
+            case '+':
+                state.currentScreenValue = state.memoryValues.reduce((previousValue, currentValue) => {
+                    return previousValue + currentValue
+                }).toFixed(4)
+                break;
+            case '-':
+                state.currentScreenValue = state.memoryValues.reduce((previousValue, currentValue) => {
+                    return previousValue - currentValue
+                }).toFixed(4)
+                break;
+            case "*":
+                state.currentScreenValue = state.memoryValues.reduce((previousValue, currentValue) => {
+                    return previousValue * currentValue
+                }).toFixed(4)
+                break;
+            case "/":
+                state.currentScreenValue = state.memoryValues.reduce((previousValue, currentValue) => {
+                    return previousValue / currentValue
+                }).toFixed(4)
+                break;
+            default:
+                throw new Error('No operator provided');
+        }
+        state.action = '=';
+        state.memoryValues.splice(0);
     },
     deleteDigitAction(state){
+        if(state.currentScreenValue.length === 1){
+            state.currentScreenValue = '0';
+            return;
+        }
         state.currentScreenValue = state.currentScreenValue.slice(0, -1)
     },
     clearAction(state){
