@@ -1,6 +1,7 @@
 @use "./utils" as *;
 .header{
   width: 90%;
+  max-width: 500px;
   display: flex;
   justify-content: space-between;
   &__theme{
