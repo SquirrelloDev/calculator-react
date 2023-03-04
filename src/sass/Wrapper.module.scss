@@ -8,4 +8,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: $pagebg;
+  &[data-theme="light"]{
+    background-color: $pagebg2;
+  }
+  &[data-theme="cyber"]{
+    background-color: $pagebg3;
+  }
 }

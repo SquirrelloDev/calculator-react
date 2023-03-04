@@ -1,11 +1,12 @@
 import classes from "../../sass/calculator/Calculator.module.scss";
 import CalcKey from "./CalcKey";
 import {useState} from "react";
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {calculatorActions} from "../../store/store";
 
 const CalcControls = () => {
     const calcDispatch = useDispatch();
+    const themeName = useSelector(state => state.theme.themeName);
   const addHandler = () =>{
     calcDispatch(calculatorActions.setAction({action: '+'}))
   }
@@ -28,7 +29,7 @@ const CalcControls = () => {
     calcDispatch(calculatorActions.clearAction())
   }
   return (
-      <div className={classes.calculator__controls}>
+      <div data-theme={themeName} className={classes.calculator__controls}>
       {/*  buttons here  */}
           <CalcKey>7</CalcKey>
           <CalcKey>8</CalcKey>

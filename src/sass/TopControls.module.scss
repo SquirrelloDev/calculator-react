@@ -1,3 +1,4 @@
+@use "./utils" as *;
 .header{
   width: 90%;
   display: flex;
@@ -5,9 +6,28 @@
   &__theme{
     display: flex;
     align-items: center;
+    &[data-theme="light"]{
+      span{
+        color: $text-dark2;
+      }
+    }
+    &[data-theme="cyber"]{
+      span{
+        color: $light-yellow;
+      }
+    }
     span{
       margin-right: 1em;
       text-transform: uppercase;
+    }
+  }
+  h1 {
+    &[data-theme="light"] {
+      color: $text-dark2;
+    }
+
+    &[data-theme="cyber"] {
+    color: $light-yellow;
     }
   }
 }
