@@ -15,11 +15,10 @@ const themeSlice = createSlice({initialState: {themeName: 'dark'}, name:'theme',
                 default:
                     state.themeName = 'dark';
             }
-
         }
     }
 })
-const calculatorSlice = createSlice({name: 'calculator', initialState: {currentScreenValue: '0', memoryValues: [], action: null}, reducers:{
+const calculatorSlice = createSlice({name: 'calculator', initialState: {currentScreenValue: '0', memoryValues: [], action: null, isResult: false}, reducers:{
     appendDigit(state,action){
         if(state.currentScreenValue.length >= 9) return;
         if(action.payload === '.' && state.currentScreenValue.includes('.')) return;
@@ -30,6 +29,11 @@ const calculatorSlice = createSlice({name: 'calculator', initialState: {currentS
         if(state.currentScreenValue[0] === '0' && state.currentScreenValue[1] !== '.'){
             state.currentScreenValue = action.payload;
             return
+        }
+        if(state.isResult){
+            state.currentScreenValue = action.payload;
+            state.isResult = false;
+            return;
         }
 
         state.currentScreenValue += action.payload;
@@ -65,7 +69,7 @@ const calculatorSlice = createSlice({name: 'calculator', initialState: {currentS
             default:
                 throw new Error('No operator provided');
         }
-        state.action = '=';
+        state.isResult = true;
         state.memoryValues.splice(0);
     },
     deleteDigitAction(state){
