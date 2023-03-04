@@ -1,6 +1,5 @@
 import classes from "../../sass/calculator/Calculator.module.scss";
 import CalcKey from "./CalcKey";
-import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {calculatorActions} from "../../store/store";
 
