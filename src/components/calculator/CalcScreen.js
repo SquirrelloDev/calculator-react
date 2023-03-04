@@ -1,9 +1,11 @@
 import classes from "../../sass/calculator/Calculator.module.scss";
+import {useSelector} from "react-redux";
 
 const CalcScreen = () => {
+    const currentScreenValue = useSelector(state => state.calculator.currentScreenValue);
   return (
       <div className={classes.calculator__screen}>
-          <p>399,981</p>
+          <p>{currentScreenValue}</p>
       </div>
   )
 }

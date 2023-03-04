@@ -1,21 +1,31 @@
 import classes from "../../sass/calculator/Calculator.module.scss";
 import CalcKey from "./CalcKey";
+import {useState} from "react";
+import {useDispatch} from "react-redux";
+import {calculatorActions} from "../../store/store";
 
 const CalcControls = () => {
-  const addHandler = () =>{
+    const calcDispatch = useDispatch();
+  const addHandler = (value) =>{
 
   }
-  const subtactHandler = () => {
+  const subtactHandler = (value) => {
 
   }
-  const multiplyHandler = () => {
+  const multiplyHandler = (value) => {
 
   }
-  const divisionHandler = () => {
+  const divisionHandler = (value) => {
 
   }
   const equalsHandler = () => {
 
+  }
+  const delHandler = () => {
+    calcDispatch(calculatorActions.deleteDigitAction())
+  }
+  const resetHandler = () => {
+    calcDispatch(calculatorActions.clearAction())
   }
   return (
       <div className={classes.calculator__controls}>
@@ -23,7 +33,7 @@ const CalcControls = () => {
           <CalcKey>7</CalcKey>
           <CalcKey>8</CalcKey>
           <CalcKey>9</CalcKey>
-          <CalcKey calcType={'SPECIAL'}>DEL</CalcKey>
+          <CalcKey calcType={'SPECIAL'} calcAction={delHandler}>DEL</CalcKey>
           <CalcKey>4</CalcKey>
           <CalcKey>5</CalcKey>
           <CalcKey>6</CalcKey>
@@ -36,8 +46,8 @@ const CalcControls = () => {
           <CalcKey>0</CalcKey>
           <CalcKey>/</CalcKey>
           <CalcKey>x</CalcKey>
-          <CalcKey calcType={'SPECIAL'} calcAction={'RESET'} calcDataset={'reset'}>reset</CalcKey>
-          <CalcKey calcType={'RESULT'} calcAction={'EQUALS'} calcDataset={'euqals'}>=</CalcKey>
+          <CalcKey calcType={'SPECIAL'} calcAction={resetHandler} calcDataset={'reset'}>reset</CalcKey>
+          <CalcKey calcType={'RESULT'} calcAction={equalsHandler} calcDataset={'euqals'}>=</CalcKey>
       </div>
   )
 }
